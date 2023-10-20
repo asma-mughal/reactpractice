@@ -47,6 +47,7 @@ const handleRoomButtonPressed = (votesToSkip,guestCanPause) =>  {
     .then((response) => response.json())
     .then((data) => {
       const {id, code} = data ;
+      console.log(data)
       localStorage.setItem('code', JSON.stringify(code))
       navigate('/room')
     })

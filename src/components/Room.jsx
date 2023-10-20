@@ -14,6 +14,7 @@ const Room = () => {
             const response = await fetch(`http://localhost:8000/api/get-room?code=${roomCode}`);
             if (response.ok) {
               const data = await response.json();
+              console.log(data)
               setRoomData({
                 votesToSkip: data.votes_to_skip,
                 guestCanPause: data.guest_can_pause,

@@ -4,6 +4,7 @@ import {Route, Routes } from 'react-router-dom';
 import RoomPage from './components/RoomPage';
 import CreateRoom from './components/CreateRoom';
 import Room from './components/Room';
+import RoomJoin from './components/RoomJoin';
 function App() {
   return (
  <Routes>
@@ -11,6 +12,7 @@ function App() {
   <Route path="/join" element={<RoomPage />} />
   <Route path="/create" element={<CreateRoom />} />
   <Route path="/room" element={<Room />} />
+  <Route  path='/join-room' element={<RoomJoin />}/>
  </Routes>
   );
 }
