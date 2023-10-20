@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { handleRoomButtonPressed } from './api';
+import { useNavigate} from 'react-router-dom';
+
 const CreateRoom = () => {
   const defaultVotes = 2;
   const [state, setState] = useState({
@@ -30,6 +31,26 @@ const CreateRoom = () => {
       guestCanPause: e.target.value === 'true' ? true : false,
     });
   };
+  const navigate = useNavigate()
+  
+const handleRoomButtonPressed = (votesToSkip,guestCanPause) =>  {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      votes_to_skip: votesToSkip,
+      guest_can_pause: guestCanPause,
+    }),
+  };
+  console.log(votesToSkip, guestCanPause)
+  fetch("http://localhost:8000/api/create-room", requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      const {id, code} = data ;
+      localStorage.setItem('code', JSON.stringify(code))
+      navigate('/room')
+    })
+}
   return (
     <Grid container spacing={1}>
     <Grid item xs={12} align="center">
@@ -76,7 +97,9 @@ const CreateRoom = () => {
       </FormControl>
     </Grid>
     <Grid item xs={12} align="center">
-      <Button color="primary" variant="contained" onClick={()=>handleRoomButtonPressed(state.votesToSkip, state.guestCanPause)}>
+      <Button color="primary" variant="contained" onClick={()=>{
+       handleRoomButtonPressed(state.votesToSkip, state.guestCanPause)
+      }}>
         Create A Room
       </Button>
     </Grid>

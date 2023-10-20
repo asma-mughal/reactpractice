@@ -10,7 +10,7 @@ function App() {
   <Route path="/" element={<HomePage />} />
   <Route path="/join" element={<RoomPage />} />
   <Route path="/create" element={<CreateRoom />} />
-  <Route path="/room/:roomCode" element={<Room />} />
+  <Route path="/room" element={<Room />} />
  </Routes>
   );
 }

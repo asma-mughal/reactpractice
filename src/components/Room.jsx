@@ -7,7 +7,7 @@ const Room = () => {
         guestCanPause: false,
         isHost: false,
       });
-      const { roomCode } = useParams();
+      const roomCode = localStorage.getItem('code')
       useEffect(() => {
         const getRoomDetails = async () => {
           try {
