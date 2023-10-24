@@ -9,7 +9,7 @@ function App() {
   return (
  <Routes>
   <Route path="/" element={<HomePage />} />
-  <Route path="/join" element={<RoomPage />} />
+  <Route path="/join" element={<RoomJoin />} />
   <Route path="/create" element={<CreateRoom />} />
   <Route path="/room" element={<Room />} />
   <Route  path='/join-room' element={<RoomJoin />}/>

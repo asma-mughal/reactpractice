@@ -11,7 +11,7 @@ const Room = () => {
       useEffect(() => {
         const getRoomDetails = async () => {
           try {
-            const response = await fetch(`http://localhost:8000/api/get-room?code=${roomCode}`);
+            const response = await fetch(`http://localhost:8000/api/get-room?code=${JSON.parse(roomCode)}`);
             if (response.ok) {
               const data = await response.json();
               console.log(data)

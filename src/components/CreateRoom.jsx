@@ -42,7 +42,6 @@ const handleRoomButtonPressed = (votesToSkip,guestCanPause) =>  {
       guest_can_pause: guestCanPause,
     }),
   };
-  console.log(votesToSkip, guestCanPause)
   fetch("http://localhost:8000/api/create-room", requestOptions)
     .then((response) => response.json())
     .then((data) => {
