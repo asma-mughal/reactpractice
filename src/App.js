@@ -11,7 +11,7 @@ function App() {
   const navigate = useNavigate()
   const [roomCode, setRoomCode] = useState(localStorage.getItem('code'));
   useEffect(()=>{
-   if(roomCode!=null){
+   if(JSON.parse(roomCode)){
     navigate('/room')
    }
   },[])
