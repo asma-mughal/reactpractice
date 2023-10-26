@@ -7,29 +7,7 @@ import {
 } from "react-router-dom";
 
 const HomePage = () => {
-  const [roomCode, setRoomCode] = useState(null);
-  const navigate = useNavigate()
-  useEffect(() => {
-    // Make an HTTP GET request to the Django API endpoint
-    fetch("http://localhost:8000/api/user-in-room")
-      .then((response) => {
-        if (response.status === 200) {
-          return response.json();
-        } else {
-          throw new Error("Request failed with status: " + response.status);
-        }
-      })
-      .then((data) => {
-        // Handle the response data
-        setRoomCode(data.code);
-        console.log(data)
-        localStorage.setItem('code', JSON.stringify(data.code));
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error("Error:", error);
-      });
-  }, []);
+
   const centerStyle = {
     display: "flex",
     flexDirection: "column",
@@ -37,11 +15,7 @@ const HomePage = () => {
     alignItems: "center",
     minHeight: "100vh",
   };
-  useEffect(() => {
-    if (roomCode) {
-      navigate('/room');
-    }
-  }, [roomCode, navigate]);
+
  
   return (
     <div style={centerStyle}>
