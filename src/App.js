@@ -15,22 +15,11 @@ function App() {
     navigate('/room')
    }
   },[])
-function* genFrom(start , end) {
-for(let i=start;i<end;i++){
-  yield i
-}
-}
-function genTo(genFrom, endLimit) {
-  for (const value of generator) {
-    if (value >= endLimit) {
-      return;
+  function* elementGen(array, gen) {
+    for (const element of array) {
+      yield* gen(element);
     }
-    yield value;
   }
-}
-function genFromTo(start, end) {
-  return genFrom(start, end)
-}
   return (
  <Routes>
   <Route path="/" element={<HomePage />} />
