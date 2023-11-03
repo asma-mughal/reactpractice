@@ -15,14 +15,19 @@ function App() {
     navigate('/room')
    }
   },[])
-    const limit = (binary, lmt) =>{
-    let count = 0;
-    return function(...args) {
-      if (count < lmt){
-        return binary(...args)
-      }
+function* genFrom(x) {
+for(let i=0;i<x;i++){
+  yield i
+}
+}
+function genTo(genFrom, endLimit) {
+  for (const value of generator) {
+    if (value >= endLimit) {
+      return;
     }
+    yield value;
   }
+}
   return (
  <Routes>
   <Route path="/" element={<HomePage />} />
