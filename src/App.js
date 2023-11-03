@@ -15,6 +15,14 @@ function App() {
     navigate('/room')
    }
   },[])
+    const limit = (binary, lmt) =>{
+    let count = 0;
+    return function(...args) {
+      if (count < lmt){
+        return binary(...args)
+      }
+    }
+  }
   return (
  <Routes>
   <Route path="/" element={<HomePage />} />

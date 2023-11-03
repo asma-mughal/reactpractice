@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Button, Typography } from "@material-ui/core";
 import CreateRoom from "./CreateRoom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Room = (props) => {
   const [roomCode, setRoomCode] = useState(localStorage.getItem('code'));
@@ -8,7 +9,7 @@ const Room = (props) => {
   const [guestCanPause, setGuestCanPause] = useState(false);
   const [isHost, setIsHost] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-
+  const navigate = useNavigate()
   useEffect(() => {
     getRoomDetails();
   }, []);
@@ -35,8 +36,7 @@ const Room = (props) => {
       headers: { "Content-Type": "application/json" },
     };
     fetch("/api/leave-room", requestOptions).then((_response) => {
-      props.leaveRoomCallback();
-      props.history.push("/");
+      navigate("/")
     });
   };
 
