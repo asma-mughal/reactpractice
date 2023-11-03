@@ -15,8 +15,8 @@ function App() {
     navigate('/room')
    }
   },[])
-function* genFrom(x) {
-for(let i=0;i<x;i++){
+function* genFrom(start , end) {
+for(let i=start;i<end;i++){
   yield i
 }
 }
@@ -27,6 +27,9 @@ function genTo(genFrom, endLimit) {
     }
     yield value;
   }
+}
+function genFromTo(start, end) {
+  return genFrom(start, end)
 }
   return (
  <Routes>
