@@ -15,11 +15,12 @@ function App() {
     navigate('/room')
    }
   },[])
-  function* elementGen(array, gen) {
-    for (const element of array) {
-      yield* gen(element);
-    }
+  let array = []
+ function collect(gen, array){
+  return function(result) {
+    array.push(result)
   }
+ }
   return (
  <Routes>
   <Route path="/" element={<HomePage />} />
