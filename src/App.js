@@ -15,12 +15,24 @@ function App() {
     navigate('/room')
    }
   },[])
-  let array = []
- function collect(gen, array){
-  return function(result) {
-    array.push(result)
+    function* genFromTo(start, end) {
+    for (let i = start; i <= end; i++) {
+      yield i;
+    }
   }
- }
+    let array = []
+    function* filter(gen, predicate) {
+      for (const value of gen) {
+        if (predicate(value)) {
+          yield value;
+        }
+      }
+    }
+    
+    let fil = filter(genFromTo(0, 5), (val) => val % 3 === 0)
+
+    
+    
   return (
  <Routes>
   <Route path="/" element={<HomePage />} />
