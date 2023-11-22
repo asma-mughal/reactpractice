@@ -20,19 +20,17 @@ function App() {
       yield i;
     }
   }
-    let array = []
-    function* filter(gen, predicate) {
-      for (const value of gen) {
-        if (predicate(value)) {
-          yield value;
-        }
-      }
-    }
-    
-    let fil = filter(genFromTo(0, 5), (val) => val % 3 === 0)
-
-    
-    
+function *concatTwo(gen1, gen2) {
+  yield * gen1;
+  yield* gen2;
+}
+let con = concatTwo(genFromTo(0, 3), genFromTo(0, 2))
+con() // 0
+con() // 1
+con() // 2
+con() // 0
+con() // 1
+con() // undefined
   return (
  <Routes>
   <Route path="/" element={<HomePage />} />
